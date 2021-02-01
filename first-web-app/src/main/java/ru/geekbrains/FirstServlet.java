@@ -13,7 +13,7 @@ public class FirstServlet implements Servlet {
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        logger.info("FirstServlet is initialized");
+        logger.info("FirstServlet is initialized!");
         this.config = config;
     }
 
