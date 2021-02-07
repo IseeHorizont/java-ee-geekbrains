@@ -7,12 +7,23 @@
     <display-name>Archetype Created Web Application</display-name>
     
     <servlet>
-        <servlet-name>FirstServlet</servlet-name>
-        <servlet-class>ru.geekbrains.FirstServlet</servlet-class>
+        <servlet-name>MainPageServlet</servlet-name>
+        <servlet-class>ru.geekbrains.MainPageServlet</servlet-class>
     </servlet>
-    
+
     <servlet-mapping>
-        <servlet-name>FirstServlet</servlet-name>
-        <url-pattern>/first-servlet</url-pattern>
+        <servlet-name>MainPageServlet</servlet-name>
+        <url-pattern>/main</url-pattern>
     </servlet-mapping>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error404.html</location>
+    </error-page>
+
+    <error-page>
+        <error-code>403</error-code>
+        <location>/error404.html</location>
+    </error-page>
+
 </web-app>

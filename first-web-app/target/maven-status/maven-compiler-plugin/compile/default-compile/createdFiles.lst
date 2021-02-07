@@ -1,1 +1,6 @@
-ru/geekbrains/FirstServlet.class
+ru/geekbrains/OrderServlet.class
+ru/geekbrains/CatalogServlet.class
+ru/geekbrains/CartServlet.class
+ru/geekbrains/MainPageServlet.class
+ru/geekbrains/ProductServlet.class
+ru/geekbrains/filter/EncodingFilter.class
