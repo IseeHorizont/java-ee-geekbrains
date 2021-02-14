@@ -1,6 +1,11 @@
-ru/geekbrains/OrderServlet.class
-ru/geekbrains/CatalogServlet.class
-ru/geekbrains/CartServlet.class
-ru/geekbrains/MainPageServlet.class
-ru/geekbrains/ProductServlet.class
+ru/geekbrains/persist/Product.class
+ru/geekbrains/FirstHttpServlet.class
 ru/geekbrains/filter/EncodingFilter.class
+ru/geekbrains/listener/BootstrapListener.class
+ru/geekbrains/UserServlet.class
+ru/geekbrains/persist/ProductRepository.class
+ru/geekbrains/persist/User.class
+ru/geekbrains/PageHeaderServlet.class
+ru/geekbrains/ProductServlet.class
+ru/geekbrains/FirstServlet.class
+ru/geekbrains/persist/UserRepository.class
