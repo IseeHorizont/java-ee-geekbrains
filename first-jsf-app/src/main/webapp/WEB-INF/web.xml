@@ -5,15 +5,16 @@
          version="4.0">
 
     <display-name>Archetype Created Web Application</display-name>
-    
+
     <servlet>
-        <servlet-name>FirstServlet</servlet-name>
-        <servlet-class>ru.geekbrains.FirstServlet</servlet-class>
+        <servlet-name>faces-servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>FirstServlet</servlet-name>
-        <url-pattern>/first-servlet</url-pattern>
+        <servlet-name>faces-servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
@@ -24,14 +25,10 @@
         <url-pattern>*.jpg</url-pattern>
     </servlet-mapping>
 
-<!--    <error-page>-->
-<!--        <error-code>404</error-code>-->
-<!--        <location>/error_servlet</location>-->
-<!--    </error-page>-->
-
-<!--    <error-page>-->
-<!--        <exception-type>java.lang.Exception</exception-type>-->
-<!--        <location>/exception_page</location>-->
-<!--    </error-page>-->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.xhtml</welcome-file>
+    </welcome-file-list>
 
 </web-app>
