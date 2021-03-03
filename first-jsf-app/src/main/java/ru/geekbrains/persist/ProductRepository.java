@@ -9,6 +9,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import javax.transaction.UserTransaction;
 import java.math.BigDecimal;
@@ -33,11 +34,11 @@ public class ProductRepository {
                 ut.begin();
 
                 saveOrUpdate(new Product(null, "Product  1",
-                        "Description of product 1", new BigDecimal(100)));
+                        "Description of product 1", create(), new BigDecimal(1000)));
                 saveOrUpdate(new Product(null, "Product  2",
-                        "Description of product 2", new BigDecimal(200)));
+                        "Description of product 2", create(), new BigDecimal(2000)));
                 saveOrUpdate(new Product(null, "Product  3",
-                        "Description of product 3", new BigDecimal(200)));
+                        "Description of product 3", create(), new BigDecimal(2000)));
 
                 ut.commit();
             } catch (Exception ex) {
@@ -75,4 +76,39 @@ public class ProductRepository {
                 .setParameter("id", id)
                 .executeUpdate();
     }
+
+    @Transactional
+    public Category create() {
+        Category category = new Category();
+        category.setName("First category");
+        em.persist(category);
+        return category;
+    }
+
+    @Transactional
+    public Category findCategory(int id) {
+        Category category = em.find(Category.class, id);
+        return category;
+    }
+
+    @Transactional
+    public List<Category> findAllCategories() {
+        Query query = em.createQuery("findAllCategories", Category.class);
+        List<Category> list = query.getResultList();
+        return list;
+    }
+
+    @Transactional
+    public void updateCategoryName(Long id, String newName) {
+        Category category = em.find(Category.class, id);
+        category.setName(newName);
+        em.merge(category);
+    }
+
+    @Transactional
+    public void deleteCategory(Long id) {
+        Category category = em.find(Category.class, id);
+        em.remove(category);
+    }
+
 }

@@ -22,16 +22,28 @@ public class Product {
     @Column(length = 1024)
     private String description;
 
+    @ManyToOne
+    private Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     @Column
     private BigDecimal price;
 
     public Product() {
     }
 
-    public Product(Long id, String name, String description, BigDecimal price) {
+    public Product(Long id, String name, String description, Category category, BigDecimal price) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.category = category;
         this.price = price;
     }
 
@@ -66,4 +78,5 @@ public class Product {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
+
 }
