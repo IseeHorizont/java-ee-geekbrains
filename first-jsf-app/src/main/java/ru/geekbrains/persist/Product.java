@@ -1,14 +1,17 @@
 package ru.geekbrains.persist;
 
+import ru.geekbrains.service.ProductRepr;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
 @NamedQueries({
-        @NamedQuery(name = "findAll", query = "from Product"),
-        @NamedQuery(name = "countAll", query = "select count(*) from Product"),
-        @NamedQuery(name = "deleteById", query = "delete from Product p where p.id = :id")
+        @NamedQuery(name = "findAll", query = "FROM Product"),
+        @NamedQuery(name = "countAll", query = "SELECT count(*) FROM Product"),
+        @NamedQuery(name = "deleteById", query = "DELETE FROM Product p WHERE p.id = :id")
 })
 public class Product {
 
@@ -25,26 +28,22 @@ public class Product {
     @ManyToOne
     private Category category;
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     @Column
     private BigDecimal price;
 
     public Product() {
     }
 
-    public Product(Long id, String name, String description, Category category, BigDecimal price) {
+    public Product(Long id, String name, String description, BigDecimal price) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.category = category;
         this.price = price;
+    }
+
+    public Product(ProductRepr productRepr, Category category) {
+        this(productRepr.getId(), productRepr.getName(), productRepr.getDescription(), productRepr.getPrice());
+        this.category = category;
     }
 
     public Long getId() {
@@ -77,6 +76,14 @@ public class Product {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
 }

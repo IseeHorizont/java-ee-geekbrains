@@ -1,41 +1,48 @@
 package ru.geekbrains.persist;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "category")
+@Table(name = "categories")
 @NamedQueries({
-        @NamedQuery(name = "findAllCategories", query = "SELECT c FROM Category c"),
+        @NamedQuery(name = "findAllCategories", query = "from Category"),
+        @NamedQuery(name = "countAllCategories", query = "select count(*) from Category"),
+        @NamedQuery(name = "deleteCategoryById", query = "delete from Category p where p.id = :id"),
+        @NamedQuery(name = "allProductsByCategoryId",
+                query = "select p " +
+                        "from Product p " +
+                        "inner join Category c on p.category.id = c.id " +
+                        "where c.id = :id")
 })
-public class Category implements Serializable {
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "nativeQuery", query = "select * from categories")
+})
+
+public class Category{
 
     @Id
-    @NotNull
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name = "name")
+    @Column
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "category")
+    @OneToMany(mappedBy = "category")
     private List<Product> products;
 
-    public Category(){
-
+    public Category() {
     }
 
-    public Category(String name){
+    public Category(String name) {
         this.name = name;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
