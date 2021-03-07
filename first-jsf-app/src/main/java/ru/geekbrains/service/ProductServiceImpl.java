@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Stateless
-public class ProductServiceImpl implements ProductService, ProductServiceRemote{
+public class ProductServiceImpl implements ProductService, ProductServiceRemote {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
 

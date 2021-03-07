@@ -1,6 +1,5 @@
 package ru.geekbrains.controller;
 
-import ru.geekbrains.persist.Product;
 import ru.geekbrains.service.CartService;
 import ru.geekbrains.service.ProductRepr;
 
@@ -20,7 +19,6 @@ public class CartController implements Serializable {
     @EJB
     private CartService cartService;
 
-    // TODO
     private final Map<Long, ProductRepr> productMap = new HashMap<>();
 
     public void addToCart(ProductRepr product) {

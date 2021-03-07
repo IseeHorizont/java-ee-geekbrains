@@ -4,14 +4,13 @@ import ru.geekbrains.service.ProductRepr;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
 
 @Entity
 @Table(name = "products")
 @NamedQueries({
-        @NamedQuery(name = "findAll", query = "FROM Product"),
-        @NamedQuery(name = "countAll", query = "SELECT count(*) FROM Product"),
-        @NamedQuery(name = "deleteById", query = "DELETE FROM Product p WHERE p.id = :id")
+        @NamedQuery(name = "findAllProducts", query = "from Product"),
+        @NamedQuery(name = "countAllProducts", query = "select count(*) from Product"),
+        @NamedQuery(name = "deleteProductById", query = "delete from Product p where p.id = :id")
 })
 public class Product {
 
@@ -25,11 +24,11 @@ public class Product {
     @Column(length = 1024)
     private String description;
 
-    @ManyToOne
-    private Category category;
-
     @Column
     private BigDecimal price;
+
+    @ManyToOne
+    private Category category;
 
     public Product() {
     }
@@ -85,5 +84,4 @@ public class Product {
     public void setCategory(Category category) {
         this.category = category;
     }
-
 }

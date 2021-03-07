@@ -2,18 +2,23 @@ package ru.geekbrains.service;
 
 import ru.geekbrains.persist.Category;
 import ru.geekbrains.persist.Product;
-
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class ProductRepr {
+
+public class ProductRepr implements Serializable {
 
     private Long id;
-    private String name;
-    private String description;
-    private BigDecimal price;
-    private Long categoryId;
-    private String categoryName;
 
+    private String name;
+
+    private String description;
+
+    private BigDecimal price;
+
+    private Long categoryId;
+
+    private String categoryName;
 
     public ProductRepr() {
     }

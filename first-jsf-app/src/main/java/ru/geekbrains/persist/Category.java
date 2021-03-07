@@ -18,8 +18,7 @@ import java.util.List;
 @NamedNativeQueries({
         @NamedNativeQuery(name = "nativeQuery", query = "select * from categories")
 })
-
-public class Category{
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,17 +3,9 @@ package ru.geekbrains.persist;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import javax.ejb.Stateless;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.transaction.Transactional;
-import javax.transaction.UserTransaction;
-import java.math.BigDecimal;
 import java.util.List;
 
 @Stateless
@@ -25,7 +17,7 @@ public class ProductRepository {
     private EntityManager em;
 
     public List<Product> findAll() {
-        return em.createNamedQuery("findAll", Product.class)
+        return em.createNamedQuery("findAllProducts", Product.class)
                 .getResultList();
     }
 
@@ -34,13 +26,9 @@ public class ProductRepository {
     }
 
     public Long countAll() {
-        return em.createNamedQuery("countAll", Long.class)
+        return em.createNamedQuery("countAllProducts", Long.class)
                 .getSingleResult();
     }
-
-//    public Category getReference(Long id){
-//        return em.getReference(Category.class, id);
-//    }
 
     public void saveOrUpdate(Product product) {
         if (product.getId() == null) {
@@ -50,7 +38,7 @@ public class ProductRepository {
     }
 
     public void deleteById(Long id) {
-        em.createNamedQuery("deleteById")
+        em.createNamedQuery("deleteProductById")
                 .setParameter("id", id)
                 .executeUpdate();
     }
