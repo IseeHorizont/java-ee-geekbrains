@@ -8,12 +8,14 @@ import ru.geekbrains.persist.Product;
 import ru.geekbrains.persist.ProductRepository;
 
 import javax.ejb.EJB;
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Stateless
+@Remote(ProductServiceRemote.class)
 public class ProductServiceImpl implements ProductService, ProductServiceRemote {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
@@ -27,15 +29,28 @@ public class ProductServiceImpl implements ProductService, ProductServiceRemote 
     @Override
     public List<ProductRepr> findAll() {
         return productRepository.findAll().stream()
-                .map(ProductRepr::new)
+                .map(this::buildProductRepr)
                 .collect(Collectors.toList());
+    }
+
+    private ProductRepr buildProductRepr(Product product){
+        ProductRepr repr = new ProductRepr();
+        repr.setId(product.getId());
+        repr.setName(product.getName());
+        repr.setDescription(product.getDescription());
+        repr.setPrice(product.getPrice());
+        Category category = product.getCategory();
+        repr.setCategoryId(category != null ? category.getId() : null);
+        repr.setCategoryName(category != null ? category.getName() : null);
+
+        return repr;
     }
 
     @Override
     public ProductRepr findById(Long id) {
         Product product = productRepository.findById(id);
         if (product != null) {
-            return new ProductRepr(product);
+            return buildProductRepr(product);
         }
         return null;
     }
