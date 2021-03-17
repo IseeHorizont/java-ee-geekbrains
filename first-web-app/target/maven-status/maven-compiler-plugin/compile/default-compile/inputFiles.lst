@@ -1,1 +1,11 @@
-/Users/mitrofanov/IdeaProjects/java-ee-geekbrains-888/first-web-app/src/main/java/ru/geekbrains/FirstServlet.java
+/Users/mitrofanov/IdeaProjects/java-ee-geekbrains/first-web-app/src/main/java/ru/geekbrains/FirstServlet.java
+/Users/mitrofanov/IdeaProjects/java-ee-geekbrains/first-web-app/src/main/java/ru/geekbrains/PageHeaderServlet.java
+/Users/mitrofanov/IdeaProjects/java-ee-geekbrains/first-web-app/src/main/java/ru/geekbrains/ProductServlet.java
+/Users/mitrofanov/IdeaProjects/java-ee-geekbrains/first-web-app/src/main/java/ru/geekbrains/persist/ProductRepository.java
+/Users/mitrofanov/IdeaProjects/java-ee-geekbrains/first-web-app/src/main/java/ru/geekbrains/FirstHttpServlet.java
+/Users/mitrofanov/IdeaProjects/java-ee-geekbrains/first-web-app/src/main/java/ru/geekbrains/filter/EncodingFilter.java
+/Users/mitrofanov/IdeaProjects/java-ee-geekbrains/first-web-app/src/main/java/ru/geekbrains/persist/User.java
+/Users/mitrofanov/IdeaProjects/java-ee-geekbrains/first-web-app/src/main/java/ru/geekbrains/persist/UserRepository.java
+/Users/mitrofanov/IdeaProjects/java-ee-geekbrains/first-web-app/src/main/java/ru/geekbrains/listener/BootstrapListener.java
+/Users/mitrofanov/IdeaProjects/java-ee-geekbrains/first-web-app/src/main/java/ru/geekbrains/UserServlet.java
+/Users/mitrofanov/IdeaProjects/java-ee-geekbrains/first-web-app/src/main/java/ru/geekbrains/persist/Product.java

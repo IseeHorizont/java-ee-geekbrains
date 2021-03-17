@@ -9,6 +9,7 @@ import java.io.IOException;
 public class FirstServlet implements Servlet {
 
     private static final Logger logger = LoggerFactory.getLogger(FirstServlet.class);
+
     private ServletConfig config;
 
     @Override
@@ -23,9 +24,13 @@ public class FirstServlet implements Servlet {
     }
 
     @Override
-    public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
+    public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
         logger.info("New request to FirstServlet");
-        servletResponse.getWriter().println("<h1>Hello from your first servlet!</h1>");
+
+        req.setAttribute("pageHeader", "Привет от сервлета!!!");
+        config.getServletContext().getRequestDispatcher("/page_header").forward(req, res);
+
+        res.getWriter().println("<h1>Hello from servlet!!!</h1>");
     }
 
     @Override
